@@ -1,0 +1,22 @@
+import os
+import pandas as pd
+
+os.makedirs('data', exist_ok=True)
+
+data_rows = [
+    ["Ka lawm e for the beautiful birthday gift!", "MIZO MIZO MIZO ENG ENG ENG ENG ENG ENG", "positive", "positive", "positive"],
+    ["He thil hi ka duh lo absolutely worst service.", "MIZO MIZO MIZO MIZO MIZO ENG ENG ENG ENG", "negative", "negative", "negative"],
+    ["Exam chu harsa lo tura ka hria but I failed anyway.", "MIZO MIZO MIZO MIZO MIZO MIZO ENG ENG ENG ENG", "negative", "negative", "neutral"],
+    ["An thil siam hi a tha lutuk highly recommended guys!", "MIZO MIZO MIZO MIZO MIZO ENG ENG ENG", "positive", "positive", "positive"],
+    ["Vawiin chu weather a nuam hle for a football match.", "MIZO MIZO ENG MIZO MIZO ENG ENG ENG ENG ENG", "positive", "positive", "positive"],
+    ["Ka thleng tep ready in five minutes.", "MIZO MIZO MIZO ENG ENG ENG ENG", "neutral", "neutral", "neutral"],
+    ["Dawr neitu pa kha a sual hle directly insulted me.", "MIZO MIZO MIZO MIZO MIZO MIZO ENG ENG ENG", "negative", "negative", "negative"],
+    ["Internet speed hi a muang khawp mai super frustrating.", "ENG ENG MIZO MIZO MIZO MIZO ENG ENG", "negative", "negative", "negative"],
+    ["A mood a off hle vawiin chu.", "MIZO ENG MIZO MIZO MIZO MIZO", "negative", "neutral", "negative"],
+    ["Great job thianpa ti hian ti zel rawh!", "ENG ENG MIZO MIZO MIZO MIZO MIZO", "positive", "positive", "positive"]
+]
+
+full_dataset = data_rows * 25
+df = pd.DataFrame(full_dataset, columns=["text", "token_tags", "true_sentiment", "annotator_a", "annotator_b"])
+df.to_csv("data/mizolingo_dataset.csv", index=False)
+print("🎉 Baseline Dataset with 250 entries saved successfully under data/mizolingo_dataset.csv")
